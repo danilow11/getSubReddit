@@ -1,38 +1,100 @@
-.App {
-  text-align: center;
+* {
+  margin: 0;
+  padding: 0;
+  font-family: arial, sans-serif;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+  margin: 20px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.reddit-listing {
+  max-width: 960px;
+  box-shadow: 0 0 4px #ccc;
+  list-style: none;
+  padding: 10px;
+  margin: 0 auto;
+}
+.reddit-post {
+  display: flex;
+  padding: 10px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.thumbnail {
+  width: 64px;
+  height: 56px;
+  margin: 0 10px;
+}
+
+.thumbnail.self {
+  background: url("//b.thumbs.redditmedia.com/XWINAyK1fHqmkcRwoZGwsASV7l6fl_cRG_5u_o9Dwqk.png") -73px -80px;
+}
+
+.thumbnail.default {
+  background: url("//b.thumbs.redditmedia.com/XWINAyK1fHqmkcRwoZGwsASV7l6fl_cRG_5u_o9Dwqk.png") -143px -80px;
+}
+
+.action {
+  margin-left: 10px;
+  color: #777;
+  font-size: 14px;
+}
+
+.comments {
+  color: firebrick;
+  font-weight: bold;
+}
+
+.submitted {
+  color: #777;
+}
+
+.voting {
+  color: #aeaeae;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.voting i {
+  cursor: pointer;
+}
+.voting i:hover {
+  color: #FFAA3F;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.content {
+  border-bottom: 1px solid #eee;
+  padding-bottom: 20px;
+  flex: 1
+}
+
+.score {
+  margin: 5px 0;
+}
+
+.title a {
+  font-weight: normal;
+  color: firebrick;
+  text-decoration: none;
+}
+.title a:visited {
+  color: firebrick;
+}
+
+.reddit-form {
+  text-align: center;
+  margin-bottom: 20px;
+}
+.reddit-form > input, .reddit-form > button  {
+  font-size: 1rem;
+  min-width: 90px;
+  max-width: 140px;
+  border-radius: 5px;
+  padding: 5px;
+  border: 3px solid silver;
+}
+.reddit-form > button {
+  margin-left: 10px;
+  background-color: coral;
 }

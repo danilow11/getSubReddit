@@ -1,24 +1,36 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
+import Subreddit from './Subreddit';
+import RedditInput from './RedditInput';
 import './App.css';
 
 function App() {
+  const [inputValue, setInputValue] = useState('pokemon');
+  const [subreddit, setSubreddit] = useState(inputValue);
+  const [buttonDisabled, setButtonDis] = useState(false);
+
+  const handleInputChange = newValue => {
+    setInputValue(newValue);
+    setButtonDis(!newValue ? true : false);
+  }
+
+  const handleSubmit = e => {
+    e.preventDefault();
+
+    if (inputValue) {
+      setSubreddit(inputValue);
+    }
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <main className="App">
+      <RedditInput
+        handleSubmit={handleSubmit}
+        inputValue={inputValue}
+        handleInputChange={handleInputChange}
+        buttonDisabled={buttonDisabled}
+      />
+      <Subreddit getThis={subreddit} />
+    </main>
   );
 }
 
