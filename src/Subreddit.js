@@ -1,19 +1,27 @@
 import React, { useState, useEffect, useMemo } from 'react';
+import PropTypes from 'prop-types';
 import RedditPost from './RedditPost';
+import ErrorMessage from './ErrorMessage';
 
 function Subreddit({ getThis }) {
   const [posts, setPosts] = useState([]);
+  const [errorMsg, setDisErrorMsg] = useState(false);
+  const errorText = "There was a problem trying to get the subreddit or it doesn't exist, please try again.";
 
   useEffect(() => {
     fetch(`https://www.reddit.com/r/${getThis}.json`)
       .then(res => res.json())
       .then(json => {
-        if (json.data)
-        setPosts(json.data.children.map(c => c.data))
-        else console.log('no exists');
+        if (json.data) {
+          setPosts(json.data.children.map(c => c.data));
+          setDisErrorMsg(false);
+        } else {
+          setDisErrorMsg(true);
+        }
       })
       .catch((error) => {
-        console.error('Errorrr:', error);
+        setDisErrorMsg(true);
+        console.error(error);
       });
   }, [getThis, setPosts]);
 
@@ -52,7 +60,8 @@ function Subreddit({ getThis }) {
   };
 
   const redditListing = useMemo(() => {
-    return (
+    return errorMsg ?
+      <ErrorMessage text={errorText}/> :
       <ul className="reddit-listing">
         {posts
           .sort((p1, p2) => p2.score - p1.score)
@@ -64,11 +73,13 @@ function Subreddit({ getThis }) {
               />
             </li>
         )}
-      </ul>
-    )
-  }, [posts]);
+      </ul>;
+  }, [posts, errorMsg]);
 
   return redditListing;
 }
+Subreddit.propTypes = {
+  getThis: PropTypes.string.isRequired
+};
 
 export default Subreddit;

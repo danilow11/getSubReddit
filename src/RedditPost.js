@@ -1,10 +1,9 @@
-import React from 'react';
+import PropTypes from 'prop-types';
 import Thumbnail from './Thumbnail';
 import Time from './Time';
 import Voting from './Voting';
 
 function RedditPost({ post, onUpvote, onDownvote }) {
-
   return (
     <div className="reddit-post">
       <Voting post={post}
@@ -28,5 +27,10 @@ function RedditPost({ post, onUpvote, onDownvote }) {
     </div>
   );
 }
+RedditPost.propTypes = {
+  post: PropTypes.object.isRequired,
+  onUpvote: PropTypes.func.isRequired,
+  onDownvote: PropTypes.func.isRequired
+};
 
 export default RedditPost;

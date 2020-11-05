@@ -1,6 +1,7 @@
-import React from 'react';
+import PropTypes from 'prop-types';
 
-function RedditInput({ handleSubmit, inputValue, handleInputChange, buttonDisabled }) {
+function RedditInput({ handleSubmit, inputValue,
+  handleInputChange, buttonDisabled }) {
   return (
     <form onSubmit={handleSubmit} className="reddit-form">
       <input
@@ -12,5 +13,10 @@ function RedditInput({ handleSubmit, inputValue, handleInputChange, buttonDisabl
     </form>
   );
 }
+RedditInput.propTypes = {
+  handleSubmit: PropTypes.func.isRequired,
+  handleInputChange: PropTypes.func.isRequired,
+  buttonDisabled: PropTypes.bool.isRequired
+};
 
 export default RedditInput;

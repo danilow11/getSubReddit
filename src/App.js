@@ -4,14 +4,14 @@ import RedditInput from './RedditInput';
 import './App.css';
 
 function App() {
-  const [inputValue, setInputValue] = useState('pokemon');
+  const [inputValue, setInputValue] = useState('hardtailgang');
   const [subreddit, setSubreddit] = useState(inputValue);
   const [buttonDisabled, setButtonDis] = useState(false);
 
   const handleInputChange = newValue => {
     setInputValue(newValue);
     setButtonDis(!newValue ? true : false);
-  }
+  };
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -29,7 +29,9 @@ function App() {
         handleInputChange={handleInputChange}
         buttonDisabled={buttonDisabled}
       />
-      <Subreddit getThis={subreddit} />
+      <Subreddit
+        getThis={subreddit}
+      />
     </main>
   );
 }
