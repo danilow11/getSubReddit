@@ -4,7 +4,7 @@ import RedditInput from './RedditInput';
 import './App.css';
 
 function App() {
-  const [inputValue, setInputValue] = useState('hardtailgang');
+  const [inputValue, setInputValue] = useState('pokemon');
   const [subreddit, setSubreddit] = useState(inputValue);
   const [buttonDisabled, setButtonDis] = useState(false);
 
